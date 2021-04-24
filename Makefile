@@ -1,4 +1,4 @@
-CXXFLAGS = -Wall -Werror -Wextra -I src
+CXXFLAGS = -Wall -Werror -Wextra -I src -I thirdparty
 CXX = g++
 
 CHESSVIZ_SCR = src/chessviz/
