@@ -1,4 +1,3 @@
-namespace Constants
-{
-    extern const int board_size(8);
+namespace Constants {
+extern const int board_size(8);
 }

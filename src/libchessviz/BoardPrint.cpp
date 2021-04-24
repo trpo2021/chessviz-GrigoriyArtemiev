@@ -1,7 +1,7 @@
+#include <chessviz/colorcheck.hpp>
+#include <chessviz/const.hpp>
 #include <iostream>
 #include <libchessviz/BoardPrint.hpp>
-#include <chessviz/const.hpp>
-#include <chessviz/colorcheck.hpp>
 #include <string>
 
 using namespace Constants;
