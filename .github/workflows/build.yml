@@ -9,8 +9,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Tests
+        run: make test && cd bin && ./test.exe && cd ../ && make clean-test
+
       - name: Check codestyle
-        run: git ls-files *.{cpp,hpp} | xargs clang-format -i --verbose && git diff --exit-code
+        run: git ls-files *.{cpp,h} | xargs clang-format -i --verbose && git diff --exit-code
 
       - name: Build application
         run: make
