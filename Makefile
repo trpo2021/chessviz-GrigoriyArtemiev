@@ -1,4 +1,4 @@
-CXXFLAGS = -Wall -Werror -Wextra -I src -I thirdparty
+CXXFLAGS = -Wall -Werror -Wextra -I src
 CXX = g++
 
 CHESSVIZ_SCR = src/chessviz/
@@ -37,7 +37,7 @@ test: $(CHESSVIZ_BIN)test.exe
 $(CHESSVIZ_BIN)test.exe: $(TEST_OBJ)main.o $(TEST_OBJ)testlibchessviz.a
 	$(CXX) $(CXXFLAGS) -o $@ $^
 $(TEST_OBJ)main.o: $(TEST)main.cpp
-	$(CXX) -c $(CXXFLAGS) -o $@ $<
+	$(CXX) -c $(CXXFLAGS) -I thirdparty -o $@ $<
 $(TEST_OBJ)testlibchessviz.a: $(TEST_OBJ)const.o $(TEST_OBJ)BoardPrint.o $(TEST_OBJ)BoardRead.o $(TEST_OBJ)move.o $(TEST_OBJ)colorcheck.o
 	ar rcs $@ $^
 $(TEST_OBJ)const.o: $(CHESSVIZ_SCR)const.cpp

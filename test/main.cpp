@@ -13,595 +13,441 @@ using namespace std;
 
 int main(int argc, const char** argv)
 {
-    return ctest_main(argc, argv);
+	return ctest_main(argc, argv);
 }
 
 CTEST_SKIP(BoadrPrint, test_skip)
 {
-    ASSERT_FAIL();
+	ASSERT_FAIL();
 }
 
 CTEST_SKIP(const, test_skip)
 {
-    ASSERT_FAIL();
+	ASSERT_FAIL();
 }
 
-CTEST(colorcheck, test1)
+CTEST(colorcheck, test1_White_Pawn)
 {
-    // Given
-    char* figure = new char[2];
-    figure[0] = 'P';
-    figure[1] = 'w';
-    // When
-    const int result = colorcheck(figure);
-    // Then
-    const int expected = 0;
+	// Given
+	char figure[2] = { 'P', 'w' };
+	// When
+	const int result = colorcheck(figure);
+	// Then
+	const int expected = 0;
 
-    // Test
-    ASSERT_EQUAL(expected, result);
+	// Test
+	ASSERT_EQUAL(expected, result);
 }
 
-CTEST(colorcheck, test2)
+CTEST(colorcheck, test2_Black_Knight)
 {
-    // Given
-    char* figure = new char[2];
-    figure[0] = 'R';
-    figure[1] = 'w';
-    // When
-    const int result = colorcheck(figure);
-    // Then
-    const int expected = 0;
+	// Given
+	char figure[2] = { 'N', 'b' };
+	// When
+	const int result = colorcheck(figure);
+	// Then
+	const int expected = 1;
 
-    // Test
-    ASSERT_EQUAL(expected, result);
+	// Test
+	ASSERT_EQUAL(expected, result);
 }
 
-CTEST(colorcheck, test3)
+CTEST(command_recognition, test1_White_Pawn_Move_2_Cells_a)
 {
-    // Given
-    char* figure = new char[2];
-    figure[0] = 'N';
-    figure[1] = 'w';
-    // When
-    const int result = colorcheck(figure);
-    // Then
-    const int expected = 0;
+	// Given
+	const string comand_move = "a7-a5";
+	int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
+	int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
+	const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
 
-    // Test
-    ASSERT_EQUAL(expected, result);
+	// Then
+	ASSERT_FALSE(result);
 }
 
-CTEST(colorcheck, test4)
+CTEST(command_recognition, test2_White_Pawn_Move_1_Cell_a)
 {
-    // Given
-    char* figure = new char[2];
-    figure[0] = 'B';
-    figure[1] = 'w';
-    // When
-    const int result = colorcheck(figure);
-    // Then
-    const int expected = 0;
+	// Given
+	const string comand_move = "a7-a6";
+	int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
+	int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
+	const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
 
-    // Test
-    ASSERT_EQUAL(expected, result);
+	// Then
+	ASSERT_FALSE(result);
 }
 
-CTEST(colorcheck, test5)
+CTEST(command_recognition, test3_White_Pawn_Move_2_Cells_b)
 {
-    // Given
-    char* figure = new char[2];
-    figure[0] = 'K';
-    figure[1] = 'w';
-    // When
-    const int result = colorcheck(figure);
-    // Then
-    const int expected = 0;
+	// Given
+	const string comand_move = "b7-b5";
+	int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
+	int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
+	const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
 
-    // Test
-    ASSERT_EQUAL(expected, result);
+	// Then
+	ASSERT_FALSE(result);
 }
 
-CTEST(colorcheck, test6)
+CTEST(command_recognition, test4_White_Pawn_Move_1_Cell_b)
 {
-    // Given
-    char* figure = new char[2];
-    figure[0] = 'Q';
-    figure[1] = 'w';
-    // When
-    const int result = colorcheck(figure);
-    // Then
-    const int expected = 0;
+	// Given
+	const string comand_move = "b7-b6";
+	int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
+	int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
+	const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
 
-    // Test
-    ASSERT_EQUAL(expected, result);
+	// Then
+	ASSERT_FALSE(result);
 }
 
-CTEST(colorcheck, test7)
+CTEST(command_recognition, test5_White_Pawn_Move_2_Cells_c)
 {
-    // Given
-    char* figure = new char[2];
-    figure[0] = 'P';
-    figure[1] = 'b';
-    // When
-    const int result = colorcheck(figure);
-    // Then
-    const int expected = 1;
+	// Given
+	const string comand_move = "c7-c5";
+	int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
+	int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
+	const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
 
-    // Test
-    ASSERT_EQUAL(expected, result);
+	// Then
+	ASSERT_FALSE(result);
 }
 
-CTEST(colorcheck, test8)
+CTEST(command_recognition, test6_White_Pawn_Move_1_Cell_c)
 {
-    // Given
-    char* figure = new char[2];
-    figure[0] = 'R';
-    figure[1] = 'b';
-    // When
-    const int result = colorcheck(figure);
-    // Then
-    const int expected = 1;
+	// Given
+	const string comand_move = "c7-c6";
+	int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
+	int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
+	const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
 
-    // Test
-    ASSERT_EQUAL(expected, result);
+	// Then
+	ASSERT_FALSE(result);
 }
 
-CTEST(colorcheck, test9)
+CTEST(command_recognition, test7_White_Pawn_Move_2_Cells_d)
 {
-    // Given
-    char* figure = new char[2];
-    figure[0] = 'N';
-    figure[1] = 'b';
-    // When
-    const int result = colorcheck(figure);
-    // Then
-    const int expected = 1;
+	// Given
+	const string comand_move = "d7-d5";
+	int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
+	int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
+	const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
 
-    // Test
-    ASSERT_EQUAL(expected, result);
+	// Then
+	ASSERT_FALSE(result);
 }
 
-CTEST(colorcheck, test10)
+CTEST(command_recognition, test8_White_Pawn_Move_1_Cell_d)
 {
-    // Given
-    char* figure = new char[2];
-    figure[0] = 'B';
-    figure[1] = 'b';
-    // When
-    const int result = colorcheck(figure);
-    // Then
-    const int expected = 1;
+	// Given
+	const string comand_move = "d7-d6";
+	int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
+	int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
+	const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
 
-    // Test
-    ASSERT_EQUAL(expected, result);
+	// Then
+	ASSERT_FALSE(result);
 }
 
-CTEST(colorcheck, test11)
+CTEST(command_recognition, test9_White_Pawn_Move_2_Cells_e)
 {
-    // Given
-    char* figure = new char[2];
-    figure[0] = 'K';
-    figure[1] = 'b';
-    // When
-    const int result = colorcheck(figure);
-    // Then
-    const int expected = 1;
+	// Given
+	const string comand_move = "e7-e5";
+	int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
+	int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
+	const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
 
-    // Test
-    ASSERT_EQUAL(expected, result);
+	// Then
+	ASSERT_FALSE(result);
 }
 
-CTEST(colorcheck, test12)
+CTEST(command_recognition, test10_White_Pawn_Move_1_Cell_e)
 {
-    // Given
-    char* figure = new char[2];
-    figure[0] = 'Q';
-    figure[1] = 'b';
-    // When
-    const int result = colorcheck(figure);
-    // Then
-    const int expected = 1;
+	// Given
+	const string comand_move = "e7-e6";
+	int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
+	int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
+	const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
 
-    // Test
-    ASSERT_EQUAL(expected, result);
+	// Then
+	ASSERT_FALSE(result);
 }
 
-CTEST(command_recognition, test1)
+CTEST(command_recognition, test11_White_Pawn_Move_2_Cells_f)
 {
-    // Given
-    const string comand_move = "a7-a5";
-    int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
-    int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
-    const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
+	// Given
+	const string comand_move = "f7-f5";
+	int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
+	int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
+	const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
 
-    // Then
-    ASSERT_FALSE(result);
+	// Then
+	ASSERT_FALSE(result);
 }
 
-CTEST(command_recognition, test2)
+CTEST(command_recognition, test12_White_Pawn_Move_1_Cell_f)
 {
-    // Given
-    const string comand_move = "a7-a6";
-    int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
-    int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
-    const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
+	// Given
+	const string comand_move = "f7-f6";
+	int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
+	int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
+	const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
 
-    // Then
-    ASSERT_FALSE(result);
+	// Then
+	ASSERT_FALSE(result);
 }
 
-CTEST(command_recognition, test3)
+CTEST(command_recognition, test13_White_Pawn_Move_2_Cells_g)
 {
-    // Given
-    const string comand_move = "b7-b5";
-    int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
-    int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
-    const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
+	// Given
+	const string comand_move = "g7-g5";
+	int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
+	int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
+	const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
 
-    // Then
-    ASSERT_FALSE(result);
+	// Then
+	ASSERT_FALSE(result);
 }
 
-CTEST(command_recognition, test4)
+CTEST(command_recognition, test14_White_Pawn_Move_1_Cell_g)
 {
-    // Given
-    const string comand_move = "b7-b6";
-    int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
-    int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
-    const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
+	// Given
+	const string comand_move = "g7-g6";
+	int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
+	int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
+	const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
 
-    // Then
-    ASSERT_FALSE(result);
+	// Then
+	ASSERT_FALSE(result);
 }
 
-CTEST(command_recognition, test5)
+CTEST(command_recognition, test15_White_Pawn_Move_2_Cells_h)
 {
-    // Given
-    const string comand_move = "c7-c5";
-    int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
-    int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
-    const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
+	// Given
+	const string comand_move = "h7-h5";
+	int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
+	int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
+	const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
 
-    // Then
-    ASSERT_FALSE(result);
+	// Then
+	ASSERT_FALSE(result);
 }
 
-CTEST(command_recognition, test6)
+CTEST(command_recognition, test16_White_Pawn_Move_1_Cell_h)
 {
-    // Given
-    const string comand_move = "c7-c6";
-    int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
-    int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
-    const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
+	// Given
+	const string comand_move = "h7-h6";
+	int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
+	int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
+	const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
 
-    // Then
-    ASSERT_FALSE(result);
+	// Then
+	ASSERT_FALSE(result);
 }
 
-CTEST(command_recognition, test7)
+CTEST(command_convert, test1_a_from_ascii_to_int_grid)
 {
-    // Given
-    const string comand_move = "d7-d5";
-    int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
-    int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
-    const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
+	// Given
+	const char comand_move = 'a';
+	// When
+	const int result = command_convert(comand_move);
+	// Then
+	const int expected = 0;
 
-    // Then
-    ASSERT_FALSE(result);
+	// Test
+	ASSERT_EQUAL(expected, result);
 }
 
-CTEST(command_recognition, test8)
+CTEST(command_convert, test2_b_from_ascii_to_int_grid)
 {
-    // Given
-    const string comand_move = "d7-d6";
-    int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
-    int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
-    const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
+	// Given
+	const char comand_move = 'b';
+	// When
+	const int result = command_convert(comand_move);
+	// Then
+	const int expected = 2;
 
-    // Then
-    ASSERT_FALSE(result);
+	// Test
+	ASSERT_EQUAL(expected, result);
 }
 
-CTEST(command_recognition, test9)
+CTEST(command_convert, test3_c_from_ascii_to_int_grid)
 {
-    // Given
-    const string comand_move = "e7-e5";
-    int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
-    int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
-    const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
+	// Given
+	const char comand_move = 'c';
+	// When
+	const int result = command_convert(comand_move);
+	// Then
+	const int expected = 4;
 
-    // Then
-    ASSERT_FALSE(result);
+	// Test
+	ASSERT_EQUAL(expected, result);
 }
 
-CTEST(command_recognition, test10)
+CTEST(command_convert, test4_d_from_ascii_to_int_grid)
 {
-    // Given
-    const string comand_move = "e7-e6";
-    int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
-    int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
-    const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
+	// Given
+	const char comand_move = 'd';
+	// When
+	const int result = command_convert(comand_move);
+	// Then
+	const int expected = 6;
 
-    // Then
-    ASSERT_FALSE(result);
+	// Test
+	ASSERT_EQUAL(expected, result);
 }
 
-CTEST(command_recognition, test11)
+CTEST(command_convert, test5_e_from_ascii_to_int_grid)
 {
-    // Given
-    const string comand_move = "f7-f5";
-    int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
-    int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
-    const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
+	// Given
+	const char comand_move = 'e';
+	// When
+	const int result = command_convert(comand_move);
+	// Then
+	const int expected = 8;
 
-    // Then
-    ASSERT_FALSE(result);
+	// Test
+	ASSERT_EQUAL(expected, result);
 }
 
-CTEST(command_recognition, test12)
+CTEST(command_convert, test6_f_from_ascii_to_int_grid)
 {
-    // Given
-    const string comand_move = "f7-f6";
-    int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
-    int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
-    const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
+	// Given
+	const char comand_move = 'f';
+	// When
+	const int result = command_convert(comand_move);
+	// Then
+	const int expected = 10;
 
-    // Then
-    ASSERT_FALSE(result);
+	// Test
+	ASSERT_EQUAL(expected, result);
 }
 
-CTEST(command_recognition, test13)
+CTEST(command_convert, test7_g_from_ascii_to_int_grid)
 {
-    // Given
-    const string comand_move = "g7-g5";
-    int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
-    int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
-    const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
+	// Given
+	const char comand_move = 'g';
+	// When
+	const int result = command_convert(comand_move);
+	// Then
+	const int expected = 12;
 
-    // Then
-    ASSERT_FALSE(result);
+	// Test
+	ASSERT_EQUAL(expected, result);
 }
 
-CTEST(command_recognition, test14)
+CTEST(command_convert, test8_h_from_ascii_to_int_grid)
 {
-    // Given
-    const string comand_move = "g7-g6";
-    int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
-    int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
-    const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
+	// Given
+	const char comand_move = 'h';
+	// When
+	const int result = command_convert(comand_move);
+	// Then
+	const int expected = 14;
 
-    // Then
-    ASSERT_FALSE(result);
+	// Test
+	ASSERT_EQUAL(expected, result);
 }
 
-CTEST(command_recognition, test15)
+CTEST(command_convert, test9_1_from_ascii_to_int_grid)
 {
-    // Given
-    const string comand_move = "h7-h5";
-    int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
-    int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
-    const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
+	// Given
+	const char comand_move = '1';
+	// When
+	const int result = command_convert(comand_move);
+	// Then
+	const int expected = 0;
 
-    // Then
-    ASSERT_FALSE(result);
+	// Test
+	ASSERT_EQUAL(expected, result);
 }
 
-CTEST(command_recognition, test16)
+CTEST(command_convert, test10_2_from_ascii_to_int_grid)
 {
-    // Given
-    const string comand_move = "h7-h6";
-    int i1 = 0, i2 = 0, j1 = 0, j2 = 0;
-    int *pi1 = &i1, *pi2 = &i2, *pj1 = &j1, *pj2 = &j2;
-    const bool result = command_recognition(comand_move, pi1, pi2, pj1, pj2);
+	// Given
+	const char comand_move = '2';
+	// When
+	const int result = command_convert(comand_move);
+	// Then
+	const int expected = 1;
 
-    // Then
-    ASSERT_FALSE(result);
+	// Test
+	ASSERT_EQUAL(expected, result);
 }
 
-CTEST(command_convert, test1)
+CTEST(command_convert, test11_3_from_ascii_to_int_grid)
 {
-    // Given
-    const char comand_move = 'a';
-    // When
-    const int result = command_convert(comand_move);
-    // Then
-    const int expected = 0;
+	// Given
+	const char comand_move = '3';
+	// When
+	const int result = command_convert(comand_move);
+	// Then
+	const int expected = 2;
 
-    // Test
-    ASSERT_EQUAL(expected, result);
+	// Test
+	ASSERT_EQUAL(expected, result);
 }
 
-CTEST(command_convert, test2)
+CTEST(command_convert, test12_4_from_ascii_to_int_grid)
 {
-    // Given
-    const char comand_move = 'b';
-    // When
-    const int result = command_convert(comand_move);
-    // Then
-    const int expected = 2;
+	// Given
+	const char comand_move = '4';
+	// When
+	const int result = command_convert(comand_move);
+	// Then
+	const int expected = 3;
 
-    // Test
-    ASSERT_EQUAL(expected, result);
+	// Test
+	ASSERT_EQUAL(expected, result);
 }
 
-CTEST(command_convert, test3)
+CTEST(command_convert, test13_5_from_ascii_to_int_grid)
 {
-    // Given
-    const char comand_move = 'c';
-    // When
-    const int result = command_convert(comand_move);
-    // Then
-    const int expected = 4;
+	// Given
+	const char comand_move = '5';
+	// When
+	const int result = command_convert(comand_move);
+	// Then
+	const int expected = 4;
 
-    // Test
-    ASSERT_EQUAL(expected, result);
+	// Test
+	ASSERT_EQUAL(expected, result);
 }
 
-CTEST(command_convert, test4)
+CTEST(command_convert, test14_6_from_ascii_to_int_grid)
 {
-    // Given
-    const char comand_move = 'd';
-    // When
-    const int result = command_convert(comand_move);
-    // Then
-    const int expected = 6;
+	// Given
+	const char comand_move = '6';
+	// When
+	const int result = command_convert(comand_move);
+	// Then
+	const int expected = 5;
 
-    // Test
-    ASSERT_EQUAL(expected, result);
+	// Test
+	ASSERT_EQUAL(expected, result);
 }
 
-CTEST(command_convert, test5)
+CTEST(command_convert, test15_7_from_ascii_to_int_grid)
 {
-    // Given
-    const char comand_move = 'e';
-    // When
-    const int result = command_convert(comand_move);
-    // Then
-    const int expected = 8;
+	// Given
+	const char comand_move = '7';
+	// When
+	const int result = command_convert(comand_move);
+	// Then
+	const int expected = 6;
 
-    // Test
-    ASSERT_EQUAL(expected, result);
+	// Test
+	ASSERT_EQUAL(expected, result);
 }
 
-CTEST(command_convert, test6)
+CTEST(command_convert, test16_8_from_ascii_to_int_grid)
 {
-    // Given
-    const char comand_move = 'f';
-    // When
-    const int result = command_convert(comand_move);
-    // Then
-    const int expected = 10;
+	// Given
+	const char comand_move = '8';
+	// When
+	const int result = command_convert(comand_move);
+	// Then
+	const int expected = 7;
 
-    // Test
-    ASSERT_EQUAL(expected, result);
-}
-
-CTEST(command_convert, test7)
-{
-    // Given
-    const char comand_move = 'g';
-    // When
-    const int result = command_convert(comand_move);
-    // Then
-    const int expected = 12;
-
-    // Test
-    ASSERT_EQUAL(expected, result);
-}
-
-CTEST(command_convert, test8)
-{
-    // Given
-    const char comand_move = 'h';
-    // When
-    const int result = command_convert(comand_move);
-    // Then
-    const int expected = 14;
-
-    // Test
-    ASSERT_EQUAL(expected, result);
-}
-
-CTEST(command_convert, test9)
-{
-    // Given
-    const char comand_move = '1';
-    // When
-    const int result = command_convert(comand_move);
-    // Then
-    const int expected = 0;
-
-    // Test
-    ASSERT_EQUAL(expected, result);
-}
-
-CTEST(command_convert, test10)
-{
-    // Given
-    const char comand_move = '2';
-    // When
-    const int result = command_convert(comand_move);
-    // Then
-    const int expected = 1;
-
-    // Test
-    ASSERT_EQUAL(expected, result);
-}
-
-CTEST(command_convert, test11)
-{
-    // Given
-    const char comand_move = '3';
-    // When
-    const int result = command_convert(comand_move);
-    // Then
-    const int expected = 2;
-
-    // Test
-    ASSERT_EQUAL(expected, result);
-}
-
-CTEST(command_convert, test12)
-{
-    // Given
-    const char comand_move = '4';
-    // When
-    const int result = command_convert(comand_move);
-    // Then
-    const int expected = 3;
-
-    // Test
-    ASSERT_EQUAL(expected, result);
-}
-
-CTEST(command_convert, test13)
-{
-    // Given
-    const char comand_move = '5';
-    // When
-    const int result = command_convert(comand_move);
-    // Then
-    const int expected = 4;
-
-    // Test
-    ASSERT_EQUAL(expected, result);
-}
-
-CTEST(command_convert, test14)
-{
-    // Given
-    const char comand_move = '6';
-    // When
-    const int result = command_convert(comand_move);
-    // Then
-    const int expected = 5;
-
-    // Test
-    ASSERT_EQUAL(expected, result);
-}
-
-CTEST(command_convert, test15)
-{
-    // Given
-    const char comand_move = '7';
-    // When
-    const int result = command_convert(comand_move);
-    // Then
-    const int expected = 6;
-
-    // Test
-    ASSERT_EQUAL(expected, result);
-}
-
-CTEST(command_convert, test16)
-{
-    // Given
-    const char comand_move = '8';
-    // When
-    const int result = command_convert(comand_move);
-    // Then
-    const int expected = 7;
-
-    // Test
-    ASSERT_EQUAL(expected, result);
+	// Test
+	ASSERT_EQUAL(expected, result);
 }
